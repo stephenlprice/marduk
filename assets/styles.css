@@ -1,0 +1,18 @@
+/* REFERENCE
+Secondary background colors {
+    #1e434c, #2b616d, #257985, #335252, #1b4b5a
+}
+*/
+
+.navbar-brand {
+    font-size: 2em;
+}
+
+/* Styles cities listed on the navbar */
+p.location-item {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding: 0rem 1rem;
+    color: #fff;
+    font-size: 0.85em;
+}
