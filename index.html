@@ -13,41 +13,77 @@
 <body class="h-100" style="background-color: #231B12;">
     <header>
         <!-- Nav -->
-        <nav class="navbar navbar-dark" style="background-color: #1b4b5a;">
+        <nav class="navbar navbar-dark d-flex" style="background-color: #1b4b5a;">
             <div class="container-fluid d-flex justify-content-around">
-                <a class="navbar-brand order-0 order-sm-0"><i class="fas fa-umbrella ms-2 me-2" style="color: #F56C57"></i>MARDUK</a>
-                <span class="navbar-text order-1 order-sm-1">Weather Dashboard</span>
-                <form class="d-flex order-2 order-sm-2 ">
+                <a class="navbar-brand"><i class="fas fa-umbrella ms-2 me-2" style="color: #F56C57"></i>MARDUK</a>
+                <span class="navbar-text">Weather Dashboard</span>
+                <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Track City" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <nav class="navbar navbar-dark order-3 order-sm-3">
-                    <div class="container-fluid">
+                <nav class="navbar navbar-dark">
+                    <div class="container-fluid d-flex">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </div>
                 </nav>
             </div>
-            <div class="collapse" id="navbarToggleExternalContent">
-                <div class="p-4">
-                    <h5 class="text-white h4">Collapsed content</h5>
-                    <span class="text-muted">Toggleable via the navbar brand.</span>
+            <div class="collapse flex-fill" id="navbarToggleExternalContent">
+                <div class="container d-flex pt-4">
+                    <div class="row flex-fill">
+                        <div class="col-12 col-sm-3 flex-fill mb-2">
+                            <h5 class="text-white h4">Favorites</h5>
+                            <span class="text-muted">Select for a detailed weather forecast</span>
+                        </div>
+                        <div class="col-12 col-sm-9 flex-fill mt-2">
+                            <div class="row">
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
-        <!-- <nav class="navbar navbar-dark" style="background-color: #1b4b5a;">
-            <div class="container-fluid d-flex justify-content-start">
-                <a class="navbar-brand" href="#">
-                    <i class="fas fa-umbrella ms-2 me-2" style="color: #F56C57"></i>MARDUK
-                </a>
-                <span class="navbar-text">Weather Dashboard</span>
-                <form class="d-flex me-2 ms-5">
-                    <input class="form-control me-2" type="search" placeholder="Track a City" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </nav> -->
     </header>
     <br>
     <main>
