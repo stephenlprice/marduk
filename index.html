@@ -18,7 +18,7 @@
                 <a class="navbar-brand"><i class="fas fa-umbrella ms-2 me-2" style="color: #F56C57"></i>MARDUK</a>
                 <span class="navbar-text">Weather Dashboard</span>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Track City" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="City, State" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <nav class="navbar navbar-dark">
@@ -92,14 +92,14 @@
                 <div class="col-12 col-md-8 col-lg-6">
                      <!-- Selected City Current Day Weather -->
                     <div class="card text-white w-100 h-auto" style="width: 18rem; background-color: #1b4b5a;">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="random city image">
                         <div id="current" class="card-body">
                             <div class="row text-center">
                                 <div class="col">
                                     <h5 class="card-title">Austin <i class="fas fa-cloud-sun"></i></h5>
                                 </div>
                                 <div class="col">
-                                    <p class="card-text">Current Date:</p>
+                                    <p id="today" class="card-text"></p>
                                 </div>
                             </div>
                             <div class="container">
