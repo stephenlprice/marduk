@@ -20,3 +20,8 @@ p.location-item {
 section#selected {
     padding: 1em;
 }
+
+p.card-text.text-white {
+    margin-bottom: 0;
+    margin-block-end: 0;
+}

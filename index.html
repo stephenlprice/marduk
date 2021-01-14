@@ -59,25 +59,29 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-6">
                      <!-- Selected City Current Day Weather -->
-                    <div class="card text-white w-100 h-auto" style="width: 18rem; max-height: 500px; background-color: #1b4b5a;">
-                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="...">
+                    <div class="card text-white w-100 h-auto" style="width: 18rem; background-color: #1b4b5a;">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Austin <i class="fas fa-cloud-sun"></i></h5>
-                            <p class="card-text">Current Date:</p>
+                            <div class="row text-center">
+                                <div class="col">
+                                    <h5 class="card-title">Austin <i class="fas fa-cloud-sun"></i></h5>
+                                </div>
+                                <div class="col">
+                                    <p class="card-text">Current Date:</p>
+                                </div>
+                            </div>
                             <div class="container">
-                                <div class="row">
+                                <div class="row text-center">
                                     <div class="col-6">
                                         <table class="table table-borderless table-hover text-white">
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i></th>
-                                                    <td class="w-75">88 F</td>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i> 88F</th>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" class="w-auto"><i class="fas fa-wind"></i></th>
-                                                    <td class="w-75">30mph</td>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-wind"></i> 30mph</th>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -86,12 +90,10 @@
                                         <table class="table table-borderless table-hover text-white">
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row" class="w-auto"><i class="fas fa-tint"></i></th>
-                                                    <td class="w-75">70%</td>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-tint"></i> 70%</th>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" class="w-auto"><i class="fas fa-fire-alt"></i></th>
-                                                    <td class="w-75">XXX</td>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-fire-alt"></i> XXX</th>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -101,29 +103,90 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-6">
                     <!-- 5 Day Forecast -->
                     <div class="row">
-                        <div class="col-6">
-                            <table class="table text-white">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row" class="w-auto">Tomorrow</th>
-                                        <td class="w-75"><i class="fas fa-cloud-sun"></i></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-6 col-lg-4">
+                            <div class="card border-0 bg-transparent">
+                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                <div class="card-body">
+                                    <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
+                                    <table class="table table-borderless text-white">
+                                        <tbody>
+                                            <tr style="text-align: center; font-size: 0.75em;">
+                                                <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i> 88F</th>
+                                                <th scope="row" class="w-auto"><i class="fas fa-wind"></i> 30mph</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <table class="table text-white">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row" class="w-auto">Tomorrow</th>
-                                        <td class="w-75"><i class="fas fa-cloud-sun"></i></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-6 col-lg-4">
+                            <div class="card border-0 bg-transparent">
+                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                <div class="card-body">
+                                    <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
+                                    <table class="table table-borderless text-white">
+                                        <tbody>
+                                            <tr style="text-align: center; font-size: 0.75em;">
+                                                <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i> 88F</th>
+                                                <th scope="row" class="w-auto"><i class="fas fa-wind"></i> 30mph</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+                        <div class="col-6 col-lg-4">
+                            <div class="card border-0 bg-transparent">
+                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                <div class="card-body">
+                                    <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
+                                    <table class="table table-borderless text-white">
+                                        <tbody>
+                                            <tr style="text-align: center; font-size: 0.75em;">
+                                                <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i> 88F</th>
+                                                <th scope="row" class="w-auto"><i class="fas fa-wind"></i> 30mph</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-4">
+                            <div class="card border-0 bg-transparent">
+                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                <div class="card-body">
+                                    <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
+                                    <table class="table table-borderless text-white">
+                                        <tbody>
+                                            <tr style="text-align: center; font-size: 0.75em;">
+                                                <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i> 88F</th>
+                                                <th scope="row" class="w-auto"><i class="fas fa-wind"></i> 30mph</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-4">
+                            <div class="card border-0 bg-transparent">
+                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                <div class="card-body">
+                                    <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
+                                    <table class="table table-borderless text-white">
+                                        <tbody>
+                                            <tr style="text-align: center; font-size: 0.75em;">
+                                                <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i> 88F</th>
+                                                <th scope="row" class="w-auto"><i class="fas fa-wind"></i> 30mph</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
