@@ -4,6 +4,7 @@ Secondary background colors {
 }
 */
 
+/* Increasing size of App Title */
 .navbar-brand {
     font-size: 2em;
 }
@@ -17,15 +18,23 @@ p.location-item {
     font-size: 0.85em;
 }
 
-section#selected {
-    padding: 1em;
-}
-
+/* Clearing browser defaults */
 p.card-text.text-white {
     margin-bottom: 0;
     margin-block-end: 0;
 }
 
+/* Current City Card */
+div#current.card-body {
+    padding-bottom: 0;
+}
+
+/* Forecast Row */
+#forecast {
+    margin-top: 1em;
+}
+
+/* Forecast Cards */
 #forecast div.card-body {
     padding: 0;
 }
