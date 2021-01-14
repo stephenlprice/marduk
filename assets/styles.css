@@ -38,3 +38,8 @@ div#current.card-body {
 #forecast div.card-body {
     padding: 0;
 }
+
+/* Decrease the size of the search bar */
+@media only screen and (max-width: 600px) {
+    input.form-control {width: 130px;}
+  }
