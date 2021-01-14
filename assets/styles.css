@@ -25,3 +25,7 @@ p.card-text.text-white {
     margin-bottom: 0;
     margin-block-end: 0;
 }
+
+#forecast div.card-body {
+    padding: 0;
+}

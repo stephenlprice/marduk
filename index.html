@@ -25,41 +25,12 @@
                 </form>
             </div>
         </nav>
-        <!-- Expanding List of Cities (responsive) -->
-        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #1b4b5a;">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <p class="location-item">Austin</p>
-                            <p class="location-item"><i class="fas fa-sun"></i> 80 F</p>
-                        </li>
-                        <li class="nav-item">
-                            <p class="location-item">Quito</p>
-                            <p class="location-item"><i class="fas fa-cloud-sun"></i> 70 F</p>
-                        </li>
-                        <li class="nav-item">
-                            <p class="location-item">Seattle</p>
-                            <p class="location-item"><i class="fas fa-cloud-showers-heavy"></i></i> 65 F</p>
-                        </li>
-                        <li class="nav-item">
-                            <p class="location-item">Atlanta</p>
-                            <p class="location-item"><i class="fas fa-cloud"></i> 75 F</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
     </header>
     <br>
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-8 col-lg-6">
                      <!-- Selected City Current Day Weather -->
                     <div class="card text-white w-100 h-auto" style="width: 18rem; background-color: #1b4b5a;">
                         <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
@@ -103,9 +74,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4 col-lg-6">
                     <!-- 5 Day Forecast -->
-                    <div class="row">
+                    <div id="forecast" class="row">
                         <div class="col-6 col-lg-4">
                             <div class="card border-0 bg-transparent">
                                 <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
