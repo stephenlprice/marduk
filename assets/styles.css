@@ -16,3 +16,7 @@ p.location-item {
     color: #fff;
     font-size: 0.85em;
 }
+
+section#selected {
+    padding: 1em;
+}
