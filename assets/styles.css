@@ -82,6 +82,16 @@ p.card-text.text-white {
     padding-bottom: 0rem;
 }
 
+/* unsplash photo */
+img#photo {
+    max-height: 400px;
+}
+
+p.card-text.green {
+    color: #B8D20B;
+    text-align: center;
+}
+
 /* Decrease the size of the search bar */
 @media only screen and (max-width: 600px) {
     input.form-control {width: 130px;}

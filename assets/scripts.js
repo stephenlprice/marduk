@@ -10,8 +10,9 @@ function init () {
     $("#today").text(dayjs().format('dddd, MMM D, YYYY'))
     var cityName = "Austin, Texas"
     currentWeather(cityName);
-    // getPhoto(cityName);
+    getPhoto(cityName);
     localStorage.setItem("favorites", JSON.stringify(favs));
+    $("div#favorites").empty();
     favorites();
 
 }
@@ -23,7 +24,7 @@ $(document).ready(function() {
         var cityName = $("input#searchTerm").val().trim();
         // Execute the search
         currentWeather(cityName);
-        // getPhoto(cityName);
+        getPhoto(cityName);
     })
 });
 
@@ -175,7 +176,7 @@ function oneCall(lon, lat){
                         <div class="card border-0 bg-transparent d-flex align-items-center">
                             <img class="weatherIcon" src="${icon}">
                             <div class="card-body">
-                                <p class="card-text text-white">${formatDay}</p>
+                                <p class="card-text green">${formatDay}</p>
                                 <table class="table table-borderless text-white">
                                     <tbody>
                                         <tr class="forecastData">
@@ -199,7 +200,7 @@ function getPhoto(term) {
     var contentFilter = "high";
     var featured = true;
     // AJAX query for Unsplash API
-    var query = url + "query=" + city + "&content_filter=" + contentFilter + "&featured=" + featured + "&h=500";
+    var query = url + "query=" + city + "&content_filter=" + contentFilter + "&featured=" + featured + "&h=400&fit=crop";
 
     $.ajax({
         url: query,
