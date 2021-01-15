@@ -53,6 +53,12 @@ div#current.card-body {
     width: 100px;
 }
 
+.favIcon {
+    display: inline;
+    height: 50px;
+    width: 50px;
+}
+
 /* Ps that are headers for forecast cards */
 p.card-text.text-white {
     text-align: center;
@@ -62,6 +68,11 @@ p.card-text.text-white {
 .forecastData {
     text-align: center;
     font-size: 0.75em;
+}
+
+#fav-body {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
 }
 
 /* Decrease the size of the search bar */

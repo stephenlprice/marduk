@@ -2,6 +2,7 @@
 var citySearch = "Austin, Texas";
 var o = "&appid=";
 var w = "b5c36ef4eeed9ba94e305cdb2871e408";
+var favs = JSON.parse(localStorage.getItem('favorites')) || ["Austin"];
 dayjs.extend(window.dayjs_plugin_utc);
 
 var endpointCurrentWeather = {
@@ -54,18 +55,17 @@ function init () {
     $("#today").text(dayjs().format('dddd, MMM D, YYYY'))
     var cityName = "Austin, Texas"
     currentWeather(cityName);
-    getPhoto(cityName);
+    // getPhoto(cityName);
 
 }
 
 $(document).ready(function() {
-
     $("button#search").on("click", function(event) {
         event.preventDefault();
+        $("div#forecast").empty();
         var cityName = $("input#searchTerm").val().trim();
-        console.log(cityName);
         currentWeather(cityName);
-        getPhoto(cityName);
+        // getPhoto(cityName);
     })
 });
 
@@ -84,21 +84,72 @@ function currentWeather(term) {
         async: true,
         crossDomain: true
       }).then(function(response) {
-            console.log(query);
             console.log(response);
             var lon = response.coord.lon;
             var lat = response.coord.lat;
-            var icon = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
             
             // Get UV Index and Forecast
             oneCall(lon, lat);
 
+            var name = response.name;
+            var temp = response.main.temp;
+            var wind = response.wind.speed;
+            var humid = response.main.humidity;
+            var icon = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+
             // Write weather data to page, UV Index comes from the One Call API
-            $("h5#cityState").text(response.name + " ");
-            $("span#tempCurr").text(" " + response.main.temp + "F");
-            $("span#windCurr").text(" " + response.wind.speed);
-            $("span#humidCurr").text(" " + response.main.humidity);
+            $("h5#cityState").text(name + " ");
+            $("span#tempCurr").text(" " + temp + "F");
+            $("span#windCurr").text(" " + wind);
+            $("span#humidCurr").text(" " + humid);
             $("img.currentIcon").attr("src", icon);
+
+            var fav = name;
+            // Does not save fav values if repeated into local storage
+            if (fav.length < 1 || fav === undefined || fav === "") {
+                console.log("cannot save an empty event");
+            }
+            else if (favs.find(function(fav) {
+                return item = fav;
+            })) {
+                console.log(name + " has already been favorited!")
+            }
+            else {
+                // Push city into favs array
+                favs.push(fav);
+                // Save favs array on local storage
+                localStorage.setItem("favorites", JSON.stringify(favs));
+
+                if (favs) {
+                    for (var j = 0; j < favs.length; j++) {
+                        
+                    }
+                }
+
+                // Write a new entry to favorites
+                $("div#favorites").prepend($(/*html*/`
+                    <div class="col-4 col-md">
+                        <div class="card border-0 bg-transparent d-flex align-items-center">
+                            <img class="favIcon" src="${icon}">
+                            <div id="fav-body" class="card-body">
+                                <p class="card-text text-white">${name}</p>
+                                <table class="table table-borderless text-white">
+                                    <tbody>
+                                        <tr class="forecastData">
+                                            <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i>${temp}</th>
+                                            <th scope="row" class="w-auto"><i class="fas fa-wind"></i>${wind}</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                `));
+            }
+
+            
+
+            
         });
 }
 
@@ -120,7 +171,6 @@ function oneCall(lon, lat){
         async: true,
         crossDomain: true
       }).then(function(response) {
-            console.log(query);
             console.log(response);
             // Write UV Index to the page
             $("span#uvCurr").text(" " + response.current.uvi);
@@ -133,8 +183,6 @@ function oneCall(lon, lat){
                 var temp = " " + forecast[i].temp.day + "F";
                 var wind = " " + forecast[i].wind_speed + "mph";
                 var icon = "http://openweathermap.org/img/wn/" + forecast[i].weather[0].icon + "@2x.png";
-                console.log(day);
-                console.log(formatDay);
 
                 $("div#forecast").append($(/*html*/`
                     <div class="col-6 col-lg-4">
@@ -165,7 +213,7 @@ function getPhoto(term) {
     var contentFilter = "high";
     var featured = true;
     // AJAX query for Unsplash API
-    var query = url + "query=" + city + "&content_filter=" + contentFilter + "&featured=" + featured;
+    var query = url + "query=" + city + "&content_filter=" + contentFilter + "&featured=" + featured + "&h=500";
 
     $.ajax({
         url: query,
@@ -180,7 +228,6 @@ function getPhoto(term) {
             xhr.setRequestHeader("Authorization", "Basic " + "Client-ID rznpVZu00FVXBm1nMh7YPVqixLxF3Kt9c35OUq5NDcw");
         }
       }).then(function(response) {
-            console.log(query);
             console.log(response);
             photo = response;
             $("img#photo").attr("src", photo.urls.regular);
