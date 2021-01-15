@@ -39,25 +39,30 @@ div#current.card-body {
     padding: 0;
 }
 
+/* OpenWeather Icon for current day */
 .currentIcon {
     display: inline; 
     height: 50px;  
     width: 50px;
 }
 
+/* OpenWeather icon for forecast */
 .weatherIcon {
     display: inline;
     height: 100px;
     width: 100px;
 }
 
-/* th .fas {
-    font-family: var(--bs-font-sans-serif);
-    font-weight: bold;
-    font-size: 1rem;
-    line-height: 1.5;
+/* Ps that are headers for forecast cards */
+p.card-text.text-white {
+    text-align: center;
+}
 
-} */
+/* OpenWeather forecast data */
+.forecastData {
+    text-align: center;
+    font-size: 0.75em;
+}
 
 /* Decrease the size of the search bar */
 @media only screen and (max-width: 600px) {

@@ -2,8 +2,7 @@
 var citySearch = "Austin, Texas";
 var o = "&appid=";
 var w = "b5c36ef4eeed9ba94e305cdb2871e408";
-// // This line grabs the input from the textbox
-// var movie = $("#movie-input").val().trim();
+dayjs.extend(window.dayjs_plugin_utc);
 
 var endpointCurrentWeather = {
     "coord": {
@@ -124,23 +123,26 @@ function oneCall(lon, lat){
 
             // Write forecast to the page
             var forecast = response.daily;
-            for (var i = 0; i < forecast.length; i++) {
+            for (var i = 1; i < 6; i++) {
                 var day = forecast[i].dt;
-                var temp = forecast[i].temp.day;
-                var wind = forecast[i].wind_speed;
-                var icon = forecast[i].weather.icon;
+                var formatDay = dayjs.unix(day).format('dddd');
+                var temp = " " + forecast[i].temp.day + "F";
+                var wind = " " + forecast[i].wind_speed + "mph";
+                var icon = "http://openweathermap.org/img/wn/" + forecast[i].weather[0].icon + "@2x.png";
+                console.log(day);
+                console.log(formatDay);
 
                 $("div#forecast").append($(/*html*/`
                     <div class="col-6 col-lg-4">
-                        <div class="card border-0 bg-transparent">
-                            <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                        <div class="card border-0 bg-transparent d-flex align-items-center">
+                            <img class="weatherIcon" src="${icon}">
                             <div class="card-body">
-                                <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
+                                <p class="card-text text-white">${formatDay}</p>
                                 <table class="table table-borderless text-white">
                                     <tbody>
-                                        <tr style="text-align: center; font-size: 0.75em;">
-                                            <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i> 88F</th>
-                                            <th scope="row" class="w-auto"><i class="fas fa-wind"></i> 30mph</th>
+                                        <tr class="forecastData">
+                                            <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i>${temp}</th>
+                                            <th scope="row" class="w-auto"><i class="fas fa-wind"></i>${wind}</th>
                                         </tr>
                                     </tbody>
                                 </table>
