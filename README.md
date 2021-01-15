@@ -1,8 +1,19 @@
 # MARDUK
-## Weather Dashboard
+
+### A Weather Forecasting App
 <br>
 
-A Weather Forecasting App
+`
+Be like the ancient Babylonian god of water and magic, Marduk - smiter of Tiamat. Use this app to forecast the former and perform the latter. Do it on your phone, tablet or computer - this magic app works on them all!
+`
+<br><br>
+
+![](./assets/images/marduk.png)
+
+### With Responsive Design
+<br>
+
+![](./assets/images/mobile.png)
 
 <br>
 <hr>
