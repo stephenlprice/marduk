@@ -1,0 +1,70 @@
+/* REFERENCE
+Secondary background colors {
+    #1e434c, #2b616d, #257985, #335252, #1b4b5a
+}
+*/
+
+/* Increasing size of App Title */
+.navbar-brand {
+    font-size: 2em;
+}
+
+/* Styles cities listed on the navbar */
+p.location-item {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding: 0rem 1rem;
+    color: #fff;
+    font-size: 0.85em;
+}
+
+/* Clearing browser defaults */
+p.card-text.text-white {
+    margin-bottom: 0;
+    margin-block-end: 0;
+}
+
+/* Current City Card */
+div#current.card-body {
+    padding-bottom: 0;
+}
+
+/* Forecast Row */
+#forecast {
+    margin-top: 1em;
+}
+
+/* Forecast Cards */
+#forecast div.card-body {
+    padding: 0;
+}
+
+/* OpenWeather Icon for current day */
+.currentIcon {
+    display: inline; 
+    height: 50px;  
+    width: 50px;
+}
+
+/* OpenWeather icon for forecast */
+.weatherIcon {
+    display: inline;
+    height: 100px;
+    width: 100px;
+}
+
+/* Ps that are headers for forecast cards */
+p.card-text.text-white {
+    text-align: center;
+}
+
+/* OpenWeather forecast data */
+.forecastData {
+    text-align: center;
+    font-size: 0.75em;
+}
+
+/* Decrease the size of the search bar */
+@media only screen and (max-width: 600px) {
+    input.form-control {width: 130px;}
+  }

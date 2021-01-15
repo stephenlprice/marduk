@@ -6,12 +6,148 @@
     <title>Marduk</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" 
+    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/styles.css">
 </head>
-<body>
+<body class="h-100" style="background-color: #231B12;">
+    <header>
+        <!-- Nav -->
+        <nav class="navbar navbar-dark d-flex" style="background-color: #1b4b5a;">
+            <div class="container-fluid d-flex justify-content-around">
+                <a class="navbar-brand"><i class="fas fa-umbrella ms-2 me-2" style="color: #F56C57"></i>MARDUK</a>
+                <span class="navbar-text">Weather Dashboard</span>
+                <form class="d-flex">
+                    <input id="searchTerm" class="form-control me-2" type="search" placeholder="City, State" aria-label="Search">
+                    <button id="search" class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <nav class="navbar navbar-dark">
+                    <div class="container-fluid d-flex">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="collapse flex-fill" id="navbarToggleExternalContent">
+                <div class="container d-flex pt-4">
+                    <div class="row flex-fill">
+                        <div class="col-12 col-sm-3 flex-fill mb-2">
+                            <h5 class="text-white h4">Favorites</h5>
+                            <span class="text-muted">Select for a detailed weather forecast</span>
+                        </div>
+                        <div class="col-12 col-sm-9 flex-fill mt-2">
+                            <div class="row">
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md">
+                                    <div class="card border-0 bg-transparent">
+                                        <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-white" style="text-align: center;">Quito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8 col-lg-6">
+                     <!-- Selected City Current Day Weather -->
+                    <div class="card text-white w-100 h-auto" style="width: 18rem; background-color: #1b4b5a;">
+                        <img id="photo" src="https://via.placeholder.com/300x200" class="card-img-top" alt="random city image">
+                        <div id="current" class="card-body">
+                            <div class="row d-flex text-center align-items-center">
+                                <div class="col-12 col-sm">
+                                    <h5 id="cityState" class="card-title" style="display: inline;">Austin</h5>
+                                    <img class="currentIcon" src="http://openweathermap.org/img/wn/10d@2x.png">
+                                </div>
+                                <div class="col-12 col-sm">
+                                    <p id="today" class="card-text"></p>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row text-center">
+                                    <div class="col-6">
+                                        <table class="table table-borderless table-hover text-white">
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-thermometer-half"></i><span id="tempCurr"></span></th>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-wind"></i><span id="windCurr"></span></th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-6">
+                                        <table class="table table-borderless table-hover text-white">
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-tint"></i><span id="humidCurr"></span></th>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-fire-alt"></i><span id="uvCurr"></span></th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-6">
+                    <!-- 5 Day Forecast -->
+                    <div id="forecast" class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/plugin/utc.js"></script>
+    <script src="./assets/scripts.js"></script>
 </body>
 </html>
