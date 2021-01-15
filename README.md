@@ -8,12 +8,12 @@ Be like the ancient Babylonian god of water and magic, Marduk - smiter of Tiamat
 `
 <br><br>
 
-![](./assets/images/marduk.png)
+![laptop layout](./assets/images/marduk.png)
 
 ### With Responsive Design
 <br>
 
-![](./assets/images/mobile.png)
+![mobile layout](./assets/images/mobile.png)
 
 <br>
 <hr>
@@ -44,3 +44,5 @@ THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
+
+Photos thanks to [Unsplash.com](https://unsplash.com/developers)'s fantastic API.
