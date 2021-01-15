@@ -76,6 +76,7 @@ p.card-text.text-white {
     font-size: 0.75em;
 }
 
+/* Favorites card body */
 #fav-body {
     padding-top: 0rem;
     padding-bottom: 0rem;

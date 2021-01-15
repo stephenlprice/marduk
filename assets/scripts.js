@@ -2,7 +2,7 @@
 var citySearch = "Austin, Texas";
 var o = "&appid=";
 var w = "b5c36ef4eeed9ba94e305cdb2871e408";
-var favs = JSON.parse(localStorage.getItem('favorites')) || ["Austin, Texas"];
+var favs = JSON.parse(localStorage.getItem('favorites')) || [];
 dayjs.extend(window.dayjs_plugin_utc);
 
 function init () {
@@ -21,31 +21,9 @@ $(document).ready(function() {
         event.preventDefault();
         $("div#forecast").empty();
         var cityName = $("input#searchTerm").val().trim();
-        // Does not store an empty search
-        if (cityName.length < 1 || cityName === undefined || cityName === "") {
-            console.log("cannot search an empty query");
-        }
-        else {
-            // Does not store name values if repeated into local storage
-            var favArray = JSON.parse(localStorage.getItem('favorites'));
-            if (!favArray.includes(cityName)) {
-                // Push city into favs array
-                favs.push(cityName);
-                // Save favs array on local storage
-                localStorage.setItem("favorites", JSON.stringify(favs));
-                console.log(favs);
-                console.log(favArray);
-                console.log(localStorage);
-                // Execute the search
-                favorites();
-                currentWeather(cityName);
-                // getPhoto(cityName);
-            }
-            else {
-                console.log(cityName + " has already been favorited!");
-                return;
-            }  
-        }
+        // Execute the search
+        currentWeather(cityName);
+        // getPhoto(cityName);
     })
 });
 
@@ -129,7 +107,34 @@ function currentWeather(term) {
             $("span#tempCurr").text(" " + temp + "F");
             $("span#windCurr").text(" " + wind);
             $("span#humidCurr").text(" " + humid);
-            $("img.currentIcon").attr("src", icon);         
+            $("img.currentIcon").attr("src", icon);
+            
+            // Does not store an empty search
+            if (name.length < 1 || name === undefined || name === "") {
+                console.log("cannot search an empty query");
+            }
+            else {
+                // Does not store name values if repeated into local storage
+                var favArray = JSON.parse(localStorage.getItem('favorites'));
+                if (!favArray.includes(name)) {
+                    // Push city into favs array
+                    favs.push(name);
+                    // Delete first element in array
+                    if (favs.length > 5) {
+                        favs.shift();
+                    }
+                    // Save favs array on local storage
+                    localStorage.setItem("favorites", JSON.stringify(favs));
+                    console.log(favs);
+                    console.log(favArray);
+                    console.log(localStorage);
+                    favorites();
+                }
+                else {
+                    console.log(name + " has already been favorited!");
+                    return;
+                }  
+            }
     });
 }
 
