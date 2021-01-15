@@ -85,6 +85,7 @@ function currentWeather(term) {
             console.log(response);
             var lon = response.coord.lon;
             var lat = response.coord.lat;
+            var icon = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
             
             // Get UV Index and Forecast
             oneCall(lon, lat);
@@ -94,7 +95,7 @@ function currentWeather(term) {
             $("span#tempCurr").text(" " + response.main.temp + "F");
             $("span#windCurr").text(" " + response.wind.speed);
             $("span#humidCurr").text(" " + response.main.humidity);
-            $("img.currentIcon").attr("src", response.weather.icon);
+            $("img.currentIcon").attr("src", icon);
         });
 }
 
