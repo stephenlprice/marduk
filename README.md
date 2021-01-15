@@ -6,7 +6,10 @@
 `
 Be like the ancient Babylonian god of water and magic, Marduk - smiter of Tiamat. Use this app to forecast the former and perform the latter. Do it on your phone, tablet or computer - this magic app works on them all!
 `
-<br><br>
+<br>
+
+## [Get started here!](https://stephenlprice.github.io/marduk/)
+<br>
 
 ![laptop layout](./assets/images/marduk.png)
 
