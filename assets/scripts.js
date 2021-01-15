@@ -52,6 +52,9 @@ var endpointCurrentWeather = {
 function init () {
     // Write current day to page
     $("#today").text(dayjs().format('dddd, MMM D, YYYY'))
+    var cityName = "Austin, Texas"
+    currentWeather(cityName);
+    getPhoto(cityName);
 
 }
 
@@ -62,7 +65,7 @@ $(document).ready(function() {
         var cityName = $("input#searchTerm").val().trim();
         console.log(cityName);
         currentWeather(cityName);
-        // getPhoto(cityName);
+        getPhoto(cityName);
     })
 });
 
