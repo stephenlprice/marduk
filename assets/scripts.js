@@ -11,6 +11,7 @@ function init () {
     var cityName = "Austin, Texas"
     currentWeather(cityName);
     // getPhoto(cityName);
+    localStorage.setItem("favorites", JSON.stringify(favs));
 
 }
 
@@ -19,8 +20,14 @@ $(document).ready(function() {
         event.preventDefault();
         $("div#forecast").empty();
         var cityName = $("input#searchTerm").val().trim();
-        currentWeather(cityName);
-        // getPhoto(cityName);
+        // Does not store an empty search
+        if (cityName.length < 1 || cityName === undefined || cityName === "") {
+            console.log("cannot search an empty query");
+        }
+        else {
+            currentWeather(cityName);
+            // getPhoto(cityName);
+        }
     })
 });
 
@@ -103,53 +110,22 @@ function currentWeather(term) {
             $("span#windCurr").text(" " + wind);
             $("span#humidCurr").text(" " + humid);
             $("img.currentIcon").attr("src", icon);
-
-            var fav = name;
-            // Does not save fav values if repeated into local storage
-            if (fav.length < 1 || fav === undefined || fav === "") {
-                console.log("cannot save an empty event");
-            }
-            else if (favs.find(function(fav) {
-                return item = fav;
-            })) {
-                console.log(name + " has already been favorited!")
-            }
-            else {
-                // Push city into favs array
-                favs.push(fav);
-                // Save favs array on local storage
-                localStorage.setItem("favorites", JSON.stringify(favs));
-
-                if (favs) {
-                    for (var j = 0; j < favs.length; j++) {
-                        
-                    }
+            
+            // Does not store name values if repeated into local storage
+            for (var f = 0; f < favs.length; f++) {
+                if (favs[f] === name) {
+                    console.log(name + " has already been favorited!");
+                    return;
                 }
-
-                // Write a new entry to favorites
-                $("div#favorites").prepend($(/*html*/`
-                    <div class="col-4 col-md">
-                        <div class="card border-0 bg-transparent d-flex align-items-center">
-                            <img class="favIcon" src="${icon}">
-                            <div id="fav-body" class="card-body">
-                                <p class="card-text text-white">${name}</p>
-                                <table class="table table-borderless text-white">
-                                    <tbody>
-                                        <tr class="forecastData">
-                                            <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i>${temp}</th>
-                                            <th scope="row" class="w-auto"><i class="fas fa-wind"></i>${wind}</th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                `));
+                else {
+                    // Push city into favs array
+                    favs.push(name);
+                    // Save favs array on local storage
+                    localStorage.setItem("favorites", JSON.stringify(favs));
+                    favorites();
+                }  
             }
-
-            
-
-            
+                      
         });
 }
 
