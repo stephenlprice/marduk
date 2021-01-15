@@ -1,5 +1,5 @@
 // Variables and DOM Elements
-var citySearch = "austin, texas";
+var citySearch = "Austin, Texas";
 var o = "&appid=";
 var w = "b5c36ef4eeed9ba94e305cdb2871e408";
 // // This line grabs the input from the textbox
@@ -50,7 +50,6 @@ var endpointCurrentWeather = {
     "cod": 200
 };
 
-
 function init () {
     // Write current day to page
     $("#today").text(dayjs().format('dddd, MMM D, YYYY'))
@@ -64,7 +63,7 @@ $(document).ready(function() {
         var cityName = $("input#searchTerm").val().trim();
         console.log(cityName);
         currentWeather(cityName);
-        getPhoto(cityName);
+        // getPhoto(cityName);
     })
 });
 
@@ -72,7 +71,7 @@ $(document).ready(function() {
 function currentWeather(term) {
     var city = term;
     var url = "https://api.openweathermap.org/data/2.5/weather?q=";
-    var unit = "&unit=imperial";
+    var unit = "&units=imperial";
     var lang = "&lang=en";
     // AJAX query for Current Weather Endpoint
     var query = url + city + unit + lang + o + w;
@@ -87,7 +86,16 @@ function currentWeather(term) {
             console.log(response);
             var lon = response.coord.lon;
             var lat = response.coord.lat;
+            
+            // Get UV Index and Forecast
             oneCall(lon, lat);
+
+            // Write weather data to page, UV Index comes from the One Call API
+            $("h5#cityState").text(response.name + " ");
+            $("span#tempCurr").text(" " + response.main.temp + "F");
+            $("span#windCurr").text(" " + response.wind.speed);
+            $("span#humidCurr").text(" " + response.main.humidity);
+            $("img.currentIcon").attr("src", response.weather.icon);
         });
 }
 
@@ -97,9 +105,9 @@ function oneCall(lon, lat){
     var latitude = "lat=" + lat;
     var longitude = "&lon=" + lon;
     var url = "https://api.openweathermap.org/data/2.5/onecall?";
-    var unit = "&unit=imperial";
+    var unit = "&units=imperial";
     var lang = "&lang=en";
-    var exclude = "&exclude=hourly,daily,minutely";
+    var exclude = "&exclude=hourly,minutely";
     // AJAX query for One Call Endpoint
     var query = url + latitude + longitude + unit + lang + exclude + o + w;
 
@@ -111,6 +119,36 @@ function oneCall(lon, lat){
       }).then(function(response) {
             console.log(query);
             console.log(response);
+            // Write UV Index to the page
+            $("span#uvCurr").text(" " + response.current.uvi);
+
+            // Write forecast to the page
+            var forecast = response.daily;
+            for (var i = 0; i < forecast.length; i++) {
+                var day = forecast[i].dt;
+                var temp = forecast[i].temp.day;
+                var wind = forecast[i].wind_speed;
+                var icon = forecast[i].weather.icon;
+
+                $("div#forecast").append($(/*html*/`
+                    <div class="col-6 col-lg-4">
+                        <div class="card border-0 bg-transparent">
+                            <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                            <div class="card-body">
+                                <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
+                                <table class="table table-borderless text-white">
+                                    <tbody>
+                                        <tr style="text-align: center; font-size: 0.75em;">
+                                            <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i> 88F</th>
+                                            <th scope="row" class="w-auto"><i class="fas fa-wind"></i> 30mph</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                `));
+            }
         });
 }
 
@@ -138,6 +176,8 @@ function getPhoto(term) {
       }).then(function(response) {
             console.log(query);
             console.log(response);
+            photo = response;
+            $("img#photo").attr("src", photo.urls.regular);
         });
 
 }

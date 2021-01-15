@@ -92,13 +92,14 @@
                 <div class="col-12 col-md-8 col-lg-6">
                      <!-- Selected City Current Day Weather -->
                     <div class="card text-white w-100 h-auto" style="width: 18rem; background-color: #1b4b5a;">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="random city image">
+                        <img id="photo" src="https://via.placeholder.com/300x200" class="card-img-top" alt="random city image">
                         <div id="current" class="card-body">
-                            <div class="row text-center">
-                                <div class="col">
-                                    <h5 class="card-title">Austin <i class="fas fa-cloud-sun"></i></h5>
+                            <div class="row d-flex text-center align-items-center">
+                                <div class="col-12 col-sm">
+                                    <h5 id="cityState" class="card-title" style="display: inline;">Austin</h5>
+                                    <img class="currentIcon" src="http://openweathermap.org/img/wn/10d@2x.png">
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-sm">
                                     <p id="today" class="card-text"></p>
                                 </div>
                             </div>
@@ -108,10 +109,10 @@
                                         <table class="table table-borderless table-hover text-white">
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i> 88F</th>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-thermometer-half"></i><span id="tempCurr"></span></th>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" class="w-auto"><i class="fas fa-wind"></i> 30mph</th>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-wind"></i><span id="windCurr"></span></th>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -120,10 +121,10 @@
                                         <table class="table table-borderless table-hover text-white">
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row" class="w-auto"><i class="fas fa-tint"></i> 70%</th>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-tint"></i><span id="humidCurr"></span></th>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" class="w-auto"><i class="fas fa-fire-alt"></i> XXX</th>
+                                                    <th scope="row" class="w-auto"><i class="fas fa-fire-alt"></i><span id="uvCurr"></span></th>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -137,8 +138,8 @@
                     <!-- 5 Day Forecast -->
                     <div id="forecast" class="row">
                         <div class="col-6 col-lg-4">
-                            <div class="card border-0 bg-transparent">
-                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                            <div class="card border-0 bg-transparent d-flex align-items-center">
+                                <img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png">
                                 <div class="card-body">
                                     <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
                                     <table class="table table-borderless text-white">
@@ -153,8 +154,8 @@
                             </div>
                         </div>
                         <div class="col-6 col-lg-4">
-                            <div class="card border-0 bg-transparent">
-                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                            <div class="card border-0 bg-transparent d-flex align-items-center">
+                                <img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png">
                                 <div class="card-body">
                                     <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
                                     <table class="table table-borderless text-white">
@@ -169,8 +170,8 @@
                             </div>
                         </div>
                         <div class="col-6 col-lg-4">
-                            <div class="card border-0 bg-transparent">
-                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                            <div class="card border-0 bg-transparent d-flex align-items-center">
+                                <img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png">
                                 <div class="card-body">
                                     <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
                                     <table class="table table-borderless text-white">
@@ -185,8 +186,8 @@
                             </div>
                         </div>
                         <div class="col-6 col-lg-4">
-                            <div class="card border-0 bg-transparent">
-                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                            <div class="card border-0 bg-transparent d-flex align-items-center">
+                                <img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png">
                                 <div class="card-body">
                                     <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
                                     <table class="table table-borderless text-white">
@@ -201,8 +202,8 @@
                             </div>
                         </div>
                         <div class="col-6 col-lg-4">
-                            <div class="card border-0 bg-transparent">
-                                <i class="fas fa-sun" style="font-size: 3.5em; text-align: center;"></i>
+                            <div class="card border-0 bg-transparent d-flex align-items-center">
+                                <img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png">
                                 <div class="card-body">
                                     <p class="card-text text-white" style="text-align: center;">Tomorrow</p>
                                     <table class="table table-borderless text-white">
@@ -215,8 +216,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                        
+                        </div>                        
                     </div>
                 </div>
             </div>
