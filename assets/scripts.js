@@ -2,7 +2,7 @@
 var citySearch = "Austin, Texas";
 var o = "&appid=";
 var w = "b5c36ef4eeed9ba94e305cdb2871e408";
-var favs = JSON.parse(localStorage.getItem('favorites')) || ["Austin"];
+var favs = JSON.parse(localStorage.getItem('favorites')) || ["Austin, Texas"];
 dayjs.extend(window.dayjs_plugin_utc);
 
 function init () {
@@ -12,6 +12,7 @@ function init () {
     currentWeather(cityName);
     // getPhoto(cityName);
     localStorage.setItem("favorites", JSON.stringify(favs));
+    favorites();
 
 }
 
@@ -25,16 +26,35 @@ $(document).ready(function() {
             console.log("cannot search an empty query");
         }
         else {
-            currentWeather(cityName);
-            // getPhoto(cityName);
+            // Does not store name values if repeated into local storage
+            var favArray = JSON.parse(localStorage.getItem('favorites'));
+            if (!favArray.includes(cityName)) {
+                // Push city into favs array
+                favs.push(cityName);
+                // Save favs array on local storage
+                localStorage.setItem("favorites", JSON.stringify(favs));
+                console.log(favs);
+                console.log(favArray);
+                console.log(localStorage);
+                // Execute the search
+                favorites();
+                currentWeather(cityName);
+                // getPhoto(cityName);
+            }
+            else {
+                console.log(cityName + " has already been favorited!");
+                return;
+            }  
         }
     })
 });
 
 function favorites() {
-    if (favs) {
-        for (var j = 0; j < favs.length; j++) {
-            var city = favs[j];
+    $("div#favorites").empty();
+    var favArray = JSON.parse(localStorage.getItem('favorites'));
+    if (favArray.length > 0) {
+        for (var j = 0; j < favArray.length; j++) {
+            var city = favArray[j];
             var url = "https://api.openweathermap.org/data/2.5/weather?q=";
             var unit = "&units=imperial";
             var lang = "&lang=en";
@@ -90,7 +110,7 @@ function currentWeather(term) {
         method: "GET",
         async: true,
         crossDomain: true
-      }).then(function(response) {
+    }).then(function(response) {
             console.log(response);
             var lon = response.coord.lon;
             var lat = response.coord.lat;
@@ -109,24 +129,8 @@ function currentWeather(term) {
             $("span#tempCurr").text(" " + temp + "F");
             $("span#windCurr").text(" " + wind);
             $("span#humidCurr").text(" " + humid);
-            $("img.currentIcon").attr("src", icon);
-            
-            // Does not store name values if repeated into local storage
-            for (var f = 0; f < favs.length; f++) {
-                if (favs[f] === name) {
-                    console.log(name + " has already been favorited!");
-                    return;
-                }
-                else {
-                    // Push city into favs array
-                    favs.push(name);
-                    // Save favs array on local storage
-                    localStorage.setItem("favorites", JSON.stringify(favs));
-                    favorites();
-                }  
-            }
-                      
-        });
+            $("img.currentIcon").attr("src", icon);         
+    });
 }
 
 // Calls the One Call Endpoint
@@ -152,6 +156,7 @@ function oneCall(lon, lat){
             $("span#uvCurr").text(" " + response.current.uvi);
 
             // Write forecast to the page
+            $("div#forecast").empty();
             var forecast = response.daily;
             for (var i = 1; i < 6; i++) {
                 var day = forecast[i].dt;
