@@ -5,51 +5,6 @@ var w = "b5c36ef4eeed9ba94e305cdb2871e408";
 var favs = JSON.parse(localStorage.getItem('favorites')) || ["Austin"];
 dayjs.extend(window.dayjs_plugin_utc);
 
-var endpointCurrentWeather = {
-    "coord": {
-        "lon": -122.08,
-        "lat": 37.39
-    },
-    "weather": [
-        {
-        "id": 800,
-        "main": "Clear",
-        "description": "clear sky",
-        "icon": "01d"
-        }
-    ],
-    "base": "stations",
-    "main": {
-        "temp": 282.55,
-        "feels_like": 281.86,
-        "temp_min": 280.37,
-        "temp_max": 284.26,
-        "pressure": 1023,
-        "humidity": 100
-    },
-    "visibility": 16093,
-    "wind": {
-        "speed": 1.5,
-        "deg": 350
-    },
-    "clouds": {
-        "all": 1
-    },
-    "dt": 1560350645,
-    "sys": {
-        "type": 1,
-        "id": 5122,
-        "message": 0.0139,
-        "country": "US",
-        "sunrise": 1560343627,
-        "sunset": 1560396563
-    },
-    "timezone": -25200,
-    "id": 420006353,
-    "name": "Mountain View",
-    "cod": 200
-};
-
 function init () {
     // Write current day to page
     $("#today").text(dayjs().format('dddd, MMM D, YYYY'))
@@ -68,6 +23,51 @@ $(document).ready(function() {
         // getPhoto(cityName);
     })
 });
+
+function favorites() {
+    if (favs) {
+        for (var j = 0; j < favs.length; j++) {
+            var city = favs[j];
+            var url = "https://api.openweathermap.org/data/2.5/weather?q=";
+            var unit = "&units=imperial";
+            var lang = "&lang=en";
+            // AJAX query for Current Weather Endpoint
+            var query = url + city + unit + lang + o + w;
+
+            $.ajax({
+                url: query,
+                method: "GET",
+                async: true,
+                crossDomain: true
+            }).then(function(response) {
+                var name = response.name;
+                var temp = response.main.temp;
+                var wind = response.wind.speed;
+                var icon = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+
+                // Write a new entry to favorites
+                $("div#favorites").prepend($(/*html*/`
+                    <div class="col-4 col-md">
+                        <div class="card border-0 bg-transparent d-flex align-items-center">
+                            <img class="favIcon" src="${icon}">
+                            <div id="fav-body" class="card-body">
+                                <p class="card-text text-white">${name}</p>
+                                <table class="table table-borderless text-white">
+                                    <tbody>
+                                        <tr class="favData">
+                                            <th scope="row" class="w-auto"><i class="fas fa-temperature-high"></i>${temp}</th>
+                                            <th scope="row" class="w-auto"><i class="fas fa-wind"></i>${wind}</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                `));
+            });
+        }
+    }
+}
 
 // Calls the Current Weather Endpoint
 function currentWeather(term) {
