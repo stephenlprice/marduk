@@ -2,7 +2,7 @@
 var citySearch = "Austin, Texas";
 var o = "&appid=";
 var w = "b5c36ef4eeed9ba94e305cdb2871e408";
-var favs = JSON.parse(localStorage.getItem('favorites')) || [];
+var favs = JSON.parse(localStorage.getItem('searches')) || [];
 dayjs.extend(window.dayjs_plugin_utc);
 
 function init () {
@@ -11,7 +11,7 @@ function init () {
     var cityName = "Austin, Texas"
     currentWeather(cityName);
     getPhoto(cityName);
-    localStorage.setItem("favorites", JSON.stringify(favs));
+    localStorage.setItem("searches", JSON.stringify(favs));
     $("div#favorites").empty();
     favorites();
 
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 function favorites() {
     $("div#favorites").empty();
-    var favArray = JSON.parse(localStorage.getItem('favorites'));
+    var favArray = JSON.parse(localStorage.getItem('searches'));
     if (favArray.length > 0) {
         for (var j = 0; j < favArray.length; j++) {
             var city = favArray[j];
@@ -116,7 +116,7 @@ function currentWeather(term) {
             }
             else {
                 // Does not store name values if repeated into local storage
-                var favArray = JSON.parse(localStorage.getItem('favorites'));
+                var favArray = JSON.parse(localStorage.getItem('searches'));
                 if (!favArray.includes(name)) {
                     // Push city into favs array
                     favs.push(name);
@@ -125,7 +125,7 @@ function currentWeather(term) {
                         favs.shift();
                     }
                     // Save favs array on local storage
-                    localStorage.setItem("favorites", JSON.stringify(favs));
+                    localStorage.setItem("searches", JSON.stringify(favs));
                     console.log(favs);
                     console.log(favArray);
                     console.log(localStorage);
